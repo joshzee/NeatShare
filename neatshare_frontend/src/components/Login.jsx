@@ -12,17 +12,21 @@ import { useNavigate } from 'react-router-dom';
 const Login = () => {
   const navigate = useNavigate();
   const responseGoogle = (res) => {
+    const decode = jwt_decode(res.credential)
+    console.log(decode);
 
     try{
-      localStorage.setItem('user', JSON.stringify(res.profileObj))
+      localStorage.setItem('user', JSON.stringify(decode))
 
-      const decoded = jwt_decode(res.credential);
-      console.log(decoded);
+      // const decoded = jwt_decode(res.credential);
 
-      const { name, picture, sub } = decoded;
 
+
+      const { name, picture, aud } = decode;
+
+      
       const doc = {
-        _id: sub,
+        _id: aud,
         _type: 'user',
         userName: name,
         image: picture
@@ -38,9 +42,8 @@ const Login = () => {
     catch (e) {
       localStorage.clear()
       console.log(e)
+    // End try  
     }
-
-  // End try  
   }
 
 
