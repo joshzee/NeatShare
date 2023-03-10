@@ -2,8 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom/client'
 import { GoogleLogin } from '@react-oauth/google';
 import jwt_decode from "jwt-decode";
-import shareVideo from '../assets/share.mp4';
-import logoWhite from '../assets/logowhite.png';
+import shareVideo from '../assets/login.mp4';
+import logoNs from '../assets/logo_ns.png';
 
 import { client } from '../client';
 import { useNavigate } from 'react-router-dom';
@@ -12,18 +12,14 @@ import { useNavigate } from 'react-router-dom';
 const Login = () => {
   const navigate = useNavigate();
   const responseGoogle = (res) => {
-    const decode = jwt_decode(res.credential)
+    const decode = jwt_decode(res.credential);
+
     console.log(decode);
 
     try{
-      localStorage.setItem('user', JSON.stringify(decode))
-
-      // const decoded = jwt_decode(res.credential);
-
-
+      localStorage.setItem('user', JSON.stringify(decode));
 
       const { name, picture, aud } = decode;
-
       
       const doc = {
         _id: aud,
@@ -48,6 +44,7 @@ const Login = () => {
 
 
 
+
   return (
     <div className="flex justify-start items-center flex-col h-screen">
       <div className="relative w-full h-full">
@@ -62,9 +59,9 @@ const Login = () => {
         /> 
       </div>
 
-      <div className="absolute flex flex-col justify-center items-center top-0 right-0 left-0 bottom-0 bg-blackOverlay">
+      <div className="absolute flex flex-col justify-center items-center top-0 right-0 left-0 bottom-0 bg-black-50 backdrop-brightness-50">
         <div className="p-5">
-          <img src={logoWhite} width="130px" alt="logo" />
+          <img src={logoNs} width="110px" alt="logo" />
         </div>
 
         <div className="shadow-2x1">
@@ -76,7 +73,7 @@ const Login = () => {
           />
       </div>
     </div>
-  </div>
+  </div> 
   )
 }
 
