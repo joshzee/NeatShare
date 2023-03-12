@@ -19,12 +19,12 @@ const Home = () => {
   const userInfo = localStorage.getItem('user') !== 'undefined' ? JSON.parse(localStorage.getItem('user')) : localStorage.clear();
 
   useEffect(() => {
-    const query = userQuery(userInfo?.aud);
+    const query = userQuery(userInfo?.sub);
     
     client.fetch(query).then((data) => {
         setUser(data[0]);
       })
-  }, []) 
+  }, [])
   
   useEffect(() => {
     scrollRef.current.scrollTo(0, 0)
@@ -42,7 +42,7 @@ const Home = () => {
           <Link to="/">
             <img src={logoNs} alt="logo" className="w-28" />
           </Link>
-          <Link to={'user-profile/${user._id}'}>
+          <Link to={`user-profile/${user?._id}`}>
             <img src={user?.image} alt="logo" className="w-28" />
           </Link>
         </div>

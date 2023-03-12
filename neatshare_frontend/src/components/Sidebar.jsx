@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavLink, Link } from 'react-router-dom';
-import { RiHomeFill } from 'react-icons/ri';
+import { FaHome } from 'react-icons/fa';
 import { IoIosArrowForward } from 'react-icons/io';
 
 import logoNs from '../assets/logo_ns.png';
@@ -38,7 +38,7 @@ const Sidebar = ({ user, closeToggle }) => {
               className={({ isActive } ) => isActive ? isActiveStyle : isNotActiveStyle}
               onClick={handleCloseSidebar}
             >
-              <RiHomeFill />
+              <FaHome className="mb-0.5"/>
               Home
             </NavLink>
             <h3 className="mt-2 px-5 text-base 2xl:text-xl">Discover categories</h3>
@@ -56,7 +56,7 @@ const Sidebar = ({ user, closeToggle }) => {
       </div>
       {user && ( 
         <Link
-        to={'user-profile/${user._id}'}
+        to={`user-profile/${user._id}`}
         className="flex my-5 gap-2 p-2 items-center bg-white rounded-lg shadow-lg mx-3"
         onClick={handleCloseSidebar}
       >

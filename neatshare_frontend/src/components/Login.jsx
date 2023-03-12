@@ -19,10 +19,11 @@ const Login = () => {
     try{
       localStorage.setItem('user', JSON.stringify(decode));
 
-      const { name, picture, aud } = decode;
-      
+      const { name, picture, sub } = decode;
+      console.log(decode);
+
       const doc = {
-        _id: aud,
+        _id: sub,
         _type: 'user',
         userName: name,
         image: picture
@@ -59,7 +60,7 @@ const Login = () => {
         /> 
       </div>
 
-      <div className="absolute flex flex-col justify-center items-center top-0 right-0 left-0 bottom-0 bg-black-50 backdrop-brightness-50">
+      <div className="absolute flex flex-col justify-center items-center top-0 right-0 left-0 bottom-0 bg-black/50">
         <div className="p-5">
           <img src={logoNs} width="110px" alt="logo" />
         </div>
