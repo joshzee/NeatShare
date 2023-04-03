@@ -66,6 +66,7 @@ const Pin = ({ pin: { postedBy, image, _id, destination, save } }) => {
             <div className="flex items-center justify-between">
               <div className="flex gap-2">
                 <a
+                  title="Download"
                   href={`${image?.asset?.url}?dl=`}
                   download
                   onClick={(e) => e.stopPropagation()}
@@ -112,6 +113,7 @@ const Pin = ({ pin: { postedBy, image, _id, destination, save } }) => {
               )}
               {postedBy?._id === user?.sub && (
                 <button
+                  title="Delete"
                   type="button"
                   onClick={(e) => {
                     e.stopPropagation();
