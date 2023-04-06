@@ -101,7 +101,6 @@ const Pin = ({ pin: { postedBy, image, _id, destination, save } }) => {
                 <a
                   onClick={(e) => {
                     e.stopPropagation();
-                    savePin(_id);
                   }}
                   href={destination}
                   target="_blank"

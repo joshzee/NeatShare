@@ -101,7 +101,7 @@ const CreatePin = ({ user }) => {
                     </p>
                     <p className="text-lg">Click to upload</p>
                   </div>
-                  <p className="mt-32 text-gray-400">
+                  <p className="mt-32 text-gray-400 lg:text-center">
                     Use high-quality JPG, SVG, PNG, GIF under 20 MB
                   </p>
                 </div>
@@ -131,7 +131,7 @@ const CreatePin = ({ user }) => {
           </div>
         </div>
 
-        <div className="flex flex-1 flex-col gap-6 lgpl-5 mt-5 w-full">
+        <div className="flex flex-1 flex-col gap-6 lg:pl-5 mt-5 w-full">
           <input
             type="text"
             value={title}
