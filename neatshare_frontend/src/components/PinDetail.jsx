@@ -48,7 +48,7 @@ const PinDetail = ({ user }) => {
             _key: uuidv4(),
             postedBy: {
               _type: "postedBy",
-              _ref: user.id,
+              _ref: user._id,
             },
           },
         ])
@@ -98,10 +98,14 @@ const PinDetail = ({ user }) => {
               {pinDetail.title}
             </h1>
             <p className="mt-3">{pinDetail.about}</p>
+            <p className="mt-3 capitalize">
+              <span className="font-bold">Category: </span>
+              {pinDetail.category}
+            </p>
           </div>
 
           <Link
-            to={`user-profile/${pinDetail.postedBy?._id}`}
+            to={`/user-profile/${user?._id}`}
             className="flex gap-2 mt-5 items-center bg-white rounded-lg"
           >
             <img
@@ -121,9 +125,9 @@ const PinDetail = ({ user }) => {
                 key={i}
               >
                 <img
-                  src={comment.postedBy?.image}
+                  src={comment?.postedBy?.image}
                   alt="user-profile"
-                  className="w-10 h-10 rounded-full cursor-pointer"
+                  className="w-10 h-10 rounded-full"
                 />
                 <div className="flex flex-col">
                   <p className="font-bold">{comment.postedBy?.userName}</p>
@@ -133,7 +137,7 @@ const PinDetail = ({ user }) => {
             ))}
           </div>
           <div className="flex flex-wrap mt-6 gap-3">
-            <Link to={`user-profile/${pinDetail?.postedBy?._id}`}>
+            <Link to={`/user-profile/${pinDetail.postedBy?._id}`}>
               <img
                 className="w-10 h-10 rounded-full cursor-pointer"
                 src={pinDetail?.postedBy?.image}
@@ -165,7 +169,9 @@ const PinDetail = ({ user }) => {
           <MasonryLayout pins={pins} />
         </>
       ) : (
-        <Spinner message="Loading more pins..." />
+        <div className="flex justify-center font-bold items-center w-full text-xl mt-8">
+          No Other Pins in this Category
+        </div>
       )}
     </>
   );

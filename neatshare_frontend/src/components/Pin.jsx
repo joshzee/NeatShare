@@ -14,7 +14,7 @@ const Pin = ({ pin: { postedBy, image, _id, destination, save } }) => {
   const user = fetchUser();
 
   const alreadySaved = !!save?.filter(
-    (item) => item?.postedBy?._id === user?.googleId
+    (item) => item?.postedBy?._id === user?.sub
   )?.length;
 
   const savePin = (id) => {
@@ -25,10 +25,10 @@ const Pin = ({ pin: { postedBy, image, _id, destination, save } }) => {
         .insert("after", "save[-1]", [
           {
             _key: uuidv4(),
-            userId: user.googleId,
+            userId: user?.sub,
             postedBy: {
               _type: "postedBy",
-              _ref: user.googleId,
+              _ref: user?.sub,
             },
           },
         ])
@@ -80,7 +80,7 @@ const Pin = ({ pin: { postedBy, image, _id, destination, save } }) => {
                   type="button"
                   className="bg-red-500 opacity-70 hover:opacity-100 text-white font-bold px-5 py-1 text-base rounded-3xl hover:shadow-md outline-none"
                 >
-                  {save?.length} Saved
+                  {save.length} Saved
                 </button>
               ) : (
                 <button
@@ -108,10 +108,9 @@ const Pin = ({ pin: { postedBy, image, _id, destination, save } }) => {
                   className="bg-white flex items-center gap-2 text-black font-bold p-2 pl-4 pr-4 rounded-full opacity-70 hover:opacity-100 hover:shadow-md"
                 >
                   <BsFillArrowUpRightCircleFill />
-                  {destination.length > 15
-                    ? `${destination.slice(0, 15)}...`
+                  {destination.length > 12
+                    ? `${destination.slice(0, 12)}...`
                     : destination}
-                  ...
                 </a>
               )}
               {postedBy?._id === user?.sub && (

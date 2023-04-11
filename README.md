@@ -1,2 +1,3 @@
 # NeatShare
-A Sharing Platform for Friends and Family Alike
+
+Social Media Website where you document your interests and ideas via Pins

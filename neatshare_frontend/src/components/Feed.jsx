@@ -33,8 +33,15 @@ const Feed = () => {
   if (loading) {
     return <Spinner message="We are adding new ideas to your feed" />;
   }
+
+  if (!pins?.length)
+    return (
+      <h2 className="font-bold text-lg">
+        No Pins in Category, Check Back Later
+      </h2>
+    );
+
   return <div>{pins && <MasonryLayout pins={pins} />}</div>;
 };
-// here @ 2:12:23 watch?v=XxXyfkrP298&t=4071s
 
 export default Feed;
