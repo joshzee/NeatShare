@@ -79,6 +79,7 @@ const UserProfile = () => {
               {user.userName}
             </h1>
             <div className="absolute top-0 z-1 right-0 p-2">
+              <span className="mr-2 -mt-0.5">Logout</span>
               {userId === user._id && (
                 <button
                   type="button"
